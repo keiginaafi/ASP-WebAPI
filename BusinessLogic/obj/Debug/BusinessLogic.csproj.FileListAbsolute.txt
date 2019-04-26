@@ -1,0 +1,16 @@
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\BusinessLogic.exe.config
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\BusinessLogic.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Common.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Data.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Core.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Common.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Data.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\bin\Debug\Core.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\obj\Debug\BusinessLogic.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\BusinessLogic\obj\Debug\BusinessLogic.pdb

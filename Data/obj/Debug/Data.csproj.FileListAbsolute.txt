@@ -1,0 +1,14 @@
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\Data.exe.config
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\Data.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\Data.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\Core.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\EntityFramework.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\Core.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\EntityFramework.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\obj\Debug\Data.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\obj\Debug\Data.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\obj\Debug\Data.Migrations.addingModel.resources
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Data\obj\Debug\Data.csproj.GenerateResource.Cache

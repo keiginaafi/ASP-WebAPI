@@ -1,0 +1,385 @@
+﻿@model IEnumerable<EmptyASP.ViewModels.ItemVM>
+
+@{
+    Layout = "../Shared/_LayoutAdministrator.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="~/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.min.css">
+<h2>Index</h2>
+<script>
+    @*var actionUrl = "@Url.Action("Delete", new { id = "PLACEHOLDER" })"*@
+</script>
+
+<button type="button" class="btn btn-primary"
+        data-toggle="modal" data-target="#myModal" onclick="return ClearScreen();">
+    Create New
+</button><br /><br />
+@*@if (TempData["message"] != null)
+{
+    <label class="alert alert-success">
+        @TempData["message"]
+    </label>
+}*@
+<table id="itemData" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>            
+            <th>
+                Suppliers Name@*@Html.DisplayNameFor(model => model.Suppliers.Name)*@
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+@*@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suppliers_Id)
+        </td>
+        <td>
+            <button value="@item.Id" class="btn btn-info edit" data-toggle="modal" data-target="#myModal">Edit</button> |
+            <button value="@item.Id" class="btn btn-danger delete">Delete</button>
+        </td>
+    </tr>
+}*@
+
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Supplier Form</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Id">Id</label>
+                        <input type="text" class="form-control" id="Id" placeholder="Id" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" />
+                        @Html.ValidationMessage("Name", new { id="name-error", @class = "text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Price</label>
+                        <input type="number" class="form-control" id="Price" placeholder="Price" />
+                        @Html.ValidationMessage("Price", new { id = "price-error", @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Stock">Stock</label>
+                        <input type="number" class="form-control" id="Stock" placeholder="Stock" />
+                        @Html.ValidationMessage("Stock", new { id = "stock-error", @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Supplier_Id">Supplier</label>
+                        <select id="Supplier_Id" class="pc form-control">
+                            <option>Select Supplier</option>
+                        </select>
+                        @Html.ValidationMessage("Suppliers_Id", new { id = "supplier-error", @class = "text-danger" })
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="Save">Add</button>
+                <button type="button" class="btn btn-primary" id="Update" style="display:none;">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/sweetalert2.min.js"></script>
+<script src="~/DataTables/datatables.js"></script>
+<script src="~/DataTables/datatables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="~/DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js"></script>
+@*@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+        Swal.fire({
+            type: 'error',
+            title: 'Operation Failed',
+            text: '@(TempData["message"])'
+        })
+    </script>
+}*@
+<script type="text/javascript">
+    //loading supplier
+    //from here
+    var Supplier = []
+    function LoadSupplier(element) {        
+        if (Supplier.length == 0) {
+            $.ajax({
+                type: "GET",
+                url: "/Supplier/LoadSupplier",
+                success: function (data) {
+                    console.log(data);
+                    Supplier = data;
+                    renderSupplier(element);
+                }
+            })
+        }
+        else {
+            renderSupplier(element);
+        }
+    }
+
+    function renderSupplier(element) {
+        var $ele = $(element);
+        $ele.empty();
+        $ele.append($('<option />').val('0').text('Select Supplier'));
+        $.each(Supplier, function (i, val) {
+            $ele.append($('<option />').val(val.Id).text(val.Name));
+        })
+    }
+
+    LoadSupplier($('#Supplier_Id'));
+    //to here
+
+    function ClearScreen() {
+        $("#Update").hide();
+        $("#Save").show();
+        $('#Name').val('');
+        $('#Price').val('');
+        $('#Stock').val('');
+        $('#Supplier_Id').val('0');
+    }
+
+    //data tables
+    $(document).ready(function () {
+        var table = $('#itemData').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "orderMulti": false,
+            "pageLength": 5,
+            "ajax": {
+                "url": "/Item/LoadData",
+                "type": "POST",
+                "dataType": "json"
+            },
+            "columnDefs": [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [5],
+                "searchable": false
+            }],
+            "columns": [
+                { "data" : "Id", "name": "Id", "autowidth": true },
+                { "data" : "Name", "name": "Name", "autowidth": true },
+                { "data" : "Price", "name": "Price", "autowidth": true },
+                { "data" : "Stock", "name": "Stock", "autowidth": true },
+                { "data": "Suppliers.Name", "name": "Suppliers.Name", "autowidth": true },
+                { "data": "Id",
+                    "render": function (data, type, row) {
+                        var btn = '<button class="btn btn-info edit">Edit</button>'
+                        + '     ' + '<button class="btn btn-danger delete">Delete</button>';
+                        return btn;
+                        ;
+                    }
+                }
+            ]
+        });
+
+        $('#itemData tbody').on('click', '.edit', function () {
+            var data = table.row($(this).parents('tr')).data();
+            $('#myModal').modal('show');
+            $("#Update").show();            
+            $("#Save").hide();
+            editItem(data['Id']);
+        });
+
+        $('#itemData tbody').on('click', '.delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            confirmFirst(data['Id']);            
+        });
+
+        //delete data
+        //$('.delete').click(function () {
+        //    confirmFirst($(this).val());
+        //});
+
+        function confirmFirst(itemId) {
+            Swal.fire({
+                title: 'Yakin ingin hapus item ini?',
+                text: 'Lanjutkan?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.value) {
+                    $(document).ready(function () {
+                        $.ajax({
+                            url: "/Item/Delete/",
+                            type: "POST",
+                        data: {
+                            id: itemId
+                        },
+                        dataType: "html",
+                        success: function () {
+                            Swal.fire("Berhasil!", "Item " + itemId + " telah dihapus", "success");
+                            table.draw();
+                            //table.row($(this).parents('tr')).remove().draw();
+                            //setTimeout(function () {// wait for 5 secs(2)
+                            //    location.reload(); // then reload the page.(3)
+                            //}, 2000);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            Swal.fire("Error deleting!", "Please try again", "error");
+                        }
+                    });
+                });                
+            }
+            });
+        }
+
+        $('#myModal').on('click', '#Save', function () {            
+            var item = new Object();
+            item.Name = $('#Name').val();
+            item.Price = $('#Price').val();
+            item.Stock = $('#Stock').val();
+            item.Suppliers_Id = $('#Supplier_Id').val();
+            $.ajax({
+                url: "/Item/Create/",
+                type: "POST",
+                data: item,
+                datatype: "application/json",
+                success: function (data) {
+                    if (data.success == true) {
+                        $('#myModal').modal('hide');
+                        Swal.fire(data.responseText, "New Item added", "success");
+                        table.draw();
+                        ClearScreen();
+                    } else {
+                        Swal.fire("Item Creation Failed", "Please check error note", "error");
+                        $('#name-error').text(data.name);
+                        $('#price-error').text(data.price);
+                        $('#stock-error').text(data.stock);
+                        $('#supplier-error').text(data.supplier);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#myModal').modal('hide');
+                    Swal.fire("Error creating Item!", "Please try again", "error");
+                    //alert(responseText.text);
+                }
+            })
+        });
+
+        //$('.edit').click(function () {
+        //    $("#Update").show();
+        //    //$("#idTxtBox").show();
+        //    $("#Save").hide();
+        //    editItem($(this).val());
+        //});
+
+        //get supplier data for edit
+        function editItem(Id) {
+            $.ajax({
+                url: "/Item/Get/",
+                type: "POST",
+                data: { id: Id },
+                datatype: "application/json",
+                success: function (data) {
+                    $('#Id').val(data.Id);
+                    $('#Name').val(data.Name);
+                    $('#Price').val(data.Price);
+                    $('#Stock').val(data.Stock);
+                    $('#Supplier_Id').val(data.Suppliers_Id);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#createModal').modal('hide');
+                    Swal.fire("Error getting Data!", "Please try again", "error");
+                    //alert(responseText.text);
+                }
+            });
+        };
+
+        //edit item
+        $('#myModal').on('click', '#Update', function () {
+            var item = new Object();
+            item.Id = $('#Id').val();
+            item.Name = $('#Name').val();
+            item.Price = $('#Price').val();
+            item.Stock = $('#Stock').val();
+            item.Suppliers_Id = $('#Supplier_Id').val();
+            $.ajax({
+                url: "/Item/Edit/",
+                type: "POST",
+                data: {
+                    id: item.Id,
+                    Name: item.Name,
+                    Price: item.Price,
+                    Stock: item.Stock,
+                    Suppliers_Id: item.Suppliers_Id
+                },
+                datatype: "application/json",
+                success: function (data) {
+                    if (data.success == true) {
+                        $('#myModal').modal('hide');
+                        Swal.fire(data.responseText, "Data edited successfully", "success");
+                        table.draw();
+                    } else {
+                        Swal.fire("Item Creation Failed", "Please check error note", "error");
+                        $('#name-error').text(data.name);
+                        $('#price-error').text(data.price);
+                        $('#stock-error').text(data.stock);
+                        $('#supplier-error').text(data.supplier);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#myModal').modal('hide');
+                    Swal.fire("Error editing Item!", "Please try again", "error");
+                    //alert(responseText.text);
+                }
+            });
+        });
+    });
+
+
+    //var deleteLinks = document.querySelectorAll('.delete');
+    //for (var i = 0; i < deleteLinks.length; i++) {
+    //    deleteLinks[i].addEventListener('click', function(event) {
+    //        event.preventDefault();
+    //        var itemId = this.getAttribute('id');
+    //        confirmFirst(itemId);
+    //    });
+    //}
+
+    //delete function    
+</script>

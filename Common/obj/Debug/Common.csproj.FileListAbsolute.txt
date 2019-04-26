@@ -1,0 +1,14 @@
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Common.exe.config
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Common.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Common.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Core.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Data.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\EntityFramework.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Core.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\Data.pdb
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\EntityFramework.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\obj\Debug\Common.exe
+C:\Users\Hilmi\documents\visual studio 2015\Projects\EmptyASP\Common\obj\Debug\Common.pdb
